@@ -36,19 +36,19 @@ app.post("/users", async function (req: Request, res: Response) {
     return res.send(results)
 })
 
-app.put("/users/:id", async function (req: Request, res: Response) {
-    const user = await myDataSource.getRepository(User).findOneBy({
-        id: req.params.id,
-    })
-    myDataSource.getRepository(User).merge(user, req.body)
-    const results = await myDataSource.getRepository(User).save(user)
-    return res.send(results)
-})
+// app.put("/users/:id", async function (req: Request, res: Response) {
+//     const user = await myDataSource.getRepository(User).findOneBy({
+//         id: req.params.id,
+//     })
+//     myDataSource.getRepository(User).merge(user, req.body)
+//     const results = await myDataSource.getRepository(User).save(user)
+//     return res.send(results)
+// })
 
-app.delete("/users/:id", async function (req: Request, res: Response) {
-    const results = await myDataSource.getRepository(User).delete(req.params.id)
-    return res.send(results)
-})
+// app.delete("/users/:id", async function (req: Request, res: Response) {
+//     const results = await myDataSource.getRepository(User).delete(req.params.id)
+//     return res.send(results)
+// })
 
 // start express server
 app.listen(4200)
