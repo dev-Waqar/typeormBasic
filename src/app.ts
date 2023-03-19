@@ -1,8 +1,9 @@
 import express = require("express")
 import { Request, Response } from "express"
 import { User } from "../entity/user"
-import {  myDataSource} from "../config"
-
+import {  myDataSource } from "../config"
+const app = express()
+app.use(express.json())
 // establish database connection
 myDataSource
     .initialize()
@@ -14,12 +15,19 @@ myDataSource
     })
 
 // create and setup express app
-const app = express()
-app.use(express.json())
+
+const user = new User()
+// user.firstName = "Timber"
+// user.lastName = "Saw"
+// user.age = 25
+
 
 // register routes
 app.get("/users", async function (req: Request, res: Response) {
-    const users = await myDataSource.getRepository(User).find()
+    const users = 
+//     user.firstName = "Timber"
+// user.lastName = "Saw"
+await myDataSource.getRepository(User).find()
     res.json(users)
 })
 
@@ -51,4 +59,6 @@ app.post("/users", async function (req: Request, res: Response) {
 // })
 
 // start express server
-app.listen(4200)
+// app.listen(4200)
+const port = 4200
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))

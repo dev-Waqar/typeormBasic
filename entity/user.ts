@@ -6,8 +6,8 @@ export class User {
     id: any
 
     @Column()
-    firstName: string | undefined
+    firstName: string
 
     @Column()
-    lastName: string | undefined
+    lastName: string
 }
